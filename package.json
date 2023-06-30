@@ -1,16 +1,36 @@
 {
-  "name": "cs-465-portfolio",
-  "version": "0.0.0",
+  "name": "cs-465-travlr-getaways",
+  "version": "0.1.0",
   "private": true,
+  "description": "Travlr Getaways’ full stack web application using the MEAN tech stack.",
+  "homepage": "https://github.com/eslutz/cs-465-portfolio#readme",
+  "bugs": {
+    "url" : "https://github.com/eslutz/cs-465-portfolio/issues",
+    "email" : "eric.slutz@snhu.edu"
+  },
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Eric Slutz",
+    "email": "eric.slutz@snhu.edu",
+    "url": "https://www.ericslutz.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eslutz/CS-465-Portfolio.git"
+  },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "start debug": "DEBUG=cs-465-portfolio:* npm start"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "hbs": "~4.0.4",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "cookie-parser": "^1.4.4",
+    "debug": "^4.3.4",
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
   }
 }
