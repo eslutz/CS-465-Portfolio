@@ -1,6 +1,8 @@
+const packageJson = require('../../package.json');
+
 /* GET news view. */
 const news = (req, res) => {
-    pageTitle = process.env.npm_package_description + ' | News';
+    pageTitle = packageJson.description + ' | News';
     console.log(process.env);
     res.render('news', { title: pageTitle });
 };

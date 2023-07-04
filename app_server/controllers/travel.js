@@ -1,6 +1,8 @@
+const packageJson = require('../../package.json');
+
 /* GET travel view. */
 const travel = (req, res) => {
-    pageTitle = process.env.npm_package_description + ' | Travel';
+    pageTitle = packageJson.description + ' | Travel';
     console.log(process.env);
     res.render('travel', { title: pageTitle });
 };

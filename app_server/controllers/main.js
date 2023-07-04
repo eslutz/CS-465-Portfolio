@@ -1,6 +1,8 @@
+const packageJson = require('../../package.json');
+
 /* GET home page. */
 const index = (req, res) => {
-    pageTitle = process.env.npm_package_description + ' | Home';
+    pageTitle = packageJson.description + ' | Home';
     res.render('index', { title: pageTitle });
 };
 

@@ -1,6 +1,8 @@
+const packageJson = require('../../package.json');
+
 /* GET rooms view. */
 const rooms = (req, res) => {
-    pageTitle = process.env.npm_package_description + ' | Rooms';
+    pageTitle = packageJson.description + ' | Rooms';
     console.log(process.env);
     res.render('rooms', { title: pageTitle });
 };

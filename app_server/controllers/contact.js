@@ -1,6 +1,8 @@
+const packageJson = require('../../package.json');
+
 /* GET contact view. */
 const contact = (req, res) => {
-    pageTitle = process.env.npm_package_description + ' | Contact';
+    pageTitle = packageJson.description + ' | Contact';
     console.log(process.env);
     res.render('contact', { title: pageTitle });
 };

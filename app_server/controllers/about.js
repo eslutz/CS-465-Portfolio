@@ -1,6 +1,8 @@
+const packageJson = require('../../package.json');
+
 /* GET about view. */
 const about = (req, res) => {
-    pageTitle = process.env.npm_package_description + ' | About';
+    pageTitle = packageJson.description + ' | About';
     console.log(process.env);
     res.render('about', { title: pageTitle });
 };
