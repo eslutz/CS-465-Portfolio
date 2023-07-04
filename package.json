@@ -20,7 +20,10 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "start debug": "DEBUG=cs-465-portfolio:* npm start"
+    "dev": "nodemon"
+  },
+  "engines": {
+    "node": ">=0.10.0"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
@@ -31,7 +34,7 @@
     "morgan": "^1.10.0",
     "supports-color": "^9.4.0"
   },
-  "engines": {
-    "node": ">=0.10.0"
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
