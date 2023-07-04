@@ -1,6 +1,6 @@
 /* GET home page. */
 const index = (req, res) => {
-    pageTitle= process.env.npm_package_description + ' | Home';
+    pageTitle = process.env.npm_package_description + ' | Home';
     res.render('index', { title: pageTitle });
 };
 
