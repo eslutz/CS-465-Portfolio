@@ -1,9 +1,11 @@
-const packageJson = require('../../package.json');
+const fs = require('fs');
+const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+const info = JSON.parse(fs.readFileSync('app_server/data/about.json', 'utf8'));
 
 /* GET about view. */
 const about = (req, res) => {
     pageTitle = packageJson.description + ' | About';
-    res.render('about', { title: pageTitle });
+    res.render('about', { title: pageTitle, info });
 };
 
 module.exports = {
