@@ -5,7 +5,7 @@ const theNews = JSON.parse(fs.readFileSync('app_server/data/news.json', 'utf8'))
 /* GET news view. */
 const news = (req, res) => {
     pageTitle = packageJson.description + ' | News';
-    res.render('news', { title: pageTitle, theNews });
+    res.render('news', { activePage: 'news', title: pageTitle, theNews });
 };
 
 module.exports = {
