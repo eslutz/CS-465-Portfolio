@@ -1,50 +1,58 @@
 {
-    "latestNews": [
-        {
-            "title": "2023 Best Beaches Contest Winners",
-            "link": "/news"
-        },
-        {
-            "title": "Top 10 Diving Spots",
-            "link": "/news"
-        },
-        {
-            "title": "Fishing ban to be implemented this year",
-            "link": "/news"
-        },
-        {
-            "title": "Lifeguard saves child from drowning",
-            "link": "/news"
-        }
-    ],
-    "vacationTips": [
-        {
-            "tip": "What to bring on the beach?",
-            "link": "/news"
-        },
-        {
-            "tip": "Planning Fun Activities",
-            "link": "/news"
-        },
-        {
-            "tip": "Diving Checklist",
-            "link": "/news"
-        },
-        {
-            "tip": "First Aid",
-            "link": "/news"
-        },
-        {
-            "tip": "How to Build a Sand Castle?",
-            "link": "/news"
-        },
-        {
-            "tip": "Tanning Tips",
-            "link": "/news"
-        }
-    ],
-    "featuredStory": {
+    "1": {
+        "type:": "latestNews",
+        "title": "2023 Best Beaches Contest Winners",
+        "link": "/news"
+    },
+    "2": {
+        "type:": "latestNews",
+        "title": "Top 10 Diving Spots",
+        "link": "/news"
+    },
+    "3": {
+        "type:": "latestNews",
+        "title": "Fishing ban to be implemented this year",
+        "link": "/news"
+    },
+    "4": {
+        "type:": "latestNews",
+        "title": "Lifeguard saves child from drowning",
+        "link": "/news"
+    },
+    "5": {
+        "type:": "vacationTips",
+        "title": "What to bring on the beach?",
+        "link": "/news"
+    },
+    "6": {
+        "type:": "vacationTips",
+        "title": "Planning Fun Activities",
+        "link": "/news"
+    },
+    "7": {
+        "type:": "vacationTips",
+        "title": "Diving Checklist",
+        "link": "/news"
+    },
+    "8": {
+        "type:": "vacationTips",
+        "title": "First Aid",
+        "link": "/news"
+    },
+    "9": {
+        "type:": "vacationTips",
+        "title": "How to Build a Sand Castle?",
+        "link": "/news"
+    },
+    "10": {
+        "type:": "vacationTips",
+        "title": "Tanning Tips",
+        "link": "/news"
+    },
+    "11": {
+        "type:": "vacationTips",
         "title": "Experience Kayaking!",
+        "link": "/news",
         "author": "Juan De La Cruz",
         "publishDate": "April 03, 2023",
         "image": "/kayak.jpg",

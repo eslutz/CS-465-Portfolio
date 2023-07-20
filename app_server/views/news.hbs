@@ -17,7 +17,7 @@
                                 <div class="sidebar">
                                     <h3>Latest News</h3>
                                     <ul>
-                                        {{#each theNews.latestNews}}
+                                        {{#each latestNews}}
                                         <li>
                                             <a href="{{this.link}}">{{this.title}}</a>
                                         </li>
@@ -25,19 +25,19 @@
                                     </ul>
                                     <h3>Vacation Tips</h3>
                                     <ul>
-                                        {{#each theNews.vacationTips}}
+                                        {{#each vacationTips}}
                                         <li>
-                                            <a href="{{this.link}}">{{this.tip}}</a>
+                                            <a href="{{this.link}}">{{this.title}}</a>
                                         </li>
                                         {{/each}}
                                     </ul>
                                 </div>
                                 <div>
                                     <h1>News</h1>
-                                    <img src="images/{{theNews.featuredStory.image}}" alt="{{theNews.featuredStory.alt}}">
-                                    <h2>{{theNews.featuredStory.title}}</h2>
-                                    <span class="time">{{theNews.featuredStory.publishDate}}<br> by: {{theNews.featuredStory.author}}</span>
-                                    {{{theNews.featuredStory.content}}}
+                                    <img src="images/{{featuredStory.image}}" alt="{{featuredStory.alt}}">
+                                    <h2>{{featuredStory.title}}</h2>
+                                    <span class="time">{{featuredStory.publishDate}}<br> by: {{featuredStory.author}}</span>
+                                    {{{featuredStory.content}}}
                                 </div>
                             </div>
                         </div>
