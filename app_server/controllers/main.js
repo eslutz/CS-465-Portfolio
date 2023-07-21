@@ -5,7 +5,7 @@ const mainPage = JSON.parse(fs.readFileSync('app_server/data/index.json', 'utf8'
 /* GET home page. */
 const index = (req, res) => {
     pageTitle = packageJson.description + ' | Home';
-    res.render('index', { title: pageTitle, mainPage });
+    res.render('index', { activePage: 'main', title: pageTitle, mainPage });
 };
 
 module.exports = {

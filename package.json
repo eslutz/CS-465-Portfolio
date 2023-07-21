@@ -1,6 +1,6 @@
 {
   "name": "cs-465-travlr-getaways",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "private": true,
   "description": "Travlr Getaways",
   "homepage": "https://github.com/eslutz/cs-465-portfolio#readme",
@@ -29,12 +29,14 @@
     "cookie-parser": "^1.4.4",
     "debug": "^4.3.4",
     "express": "^4.18.2",
-    "hbs": "^4.2.0",
     "http-errors": "^2.0.0",
     "morgan": "^1.10.0",
     "supports-color": "^9.4.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "hbs": "^4.2.0",
+    "mongoose": "^5.9.0",
+    "nodemon": "^3.0.1",
+    "seedgoose": "^2.0.2"
   }
 }
