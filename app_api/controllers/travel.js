@@ -9,7 +9,7 @@ const tripList = async (req, res) => {
             if (!trips) {
                 return res
                     .status(404)
-                    .json({ "message": "trip not found" });
+                    .json({ "message": "trips not found" });
             } else if (err) {
                 return res
                     .status(404)

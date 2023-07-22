@@ -8,7 +8,7 @@ const apiOptions = {
 /* Render travel list view */
 const renderTravelList = (req, res, responseBody) => {
     let message = null;
-    let pageTitle = packageJson.description + ' | dsaf adfsf as';
+    let pageTitle = packageJson.description + ' | Travel';
 
     if (!(responseBody instanceof Array)) {
         message = 'API lookup error';
@@ -20,6 +20,7 @@ const renderTravelList = (req, res, responseBody) => {
     }
 
     res.render('travel', {
+        activePage: 'travel',
         title: pageTitle,
         trips: responseBody,
         message
