@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Define trip schema
+// Define news schema
 const newsSchema = new mongoose.Schema({
     code: { type: String, required: true, index: true },
     title: { type: String, required: true, index: true },

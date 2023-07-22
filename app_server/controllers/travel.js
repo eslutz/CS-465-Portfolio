@@ -6,7 +6,7 @@ const apiOptions = {
 }
 
 /* Render travel list view */
-const renderTravelList = (req, res, responseBody) => {
+const renderTripList = (req, res, responseBody) => {
     let message = null;
     let pageTitle = packageJson.description + ' | Travel';
 
@@ -27,15 +27,15 @@ const renderTravelList = (req, res, responseBody) => {
     });
 };
 
-/* GET travel list. */
-const travelList = (req, res) => {
+/* GET trip list. */
+const tripList = (req, res) => {
     const path = '/api/trips';
     const requestOptions = {
         url: `${apiOptions.server}${path}`,
         method: 'GET',
         json: {}
     };
-    console.log('>> travelController.travelList calling ' + requestOptions.url);
+    console.log('>> travelController.tripList calling ' + requestOptions.url);
     request(
         requestOptions,
         (err, {statusCode}, body) => {
@@ -46,11 +46,11 @@ const travelList = (req, res) => {
                     return trip;
                 });
             }
-            renderTravelList(req, res, trips);
+            renderTripList(req, res, trips);
         }
     );
 };
 
 module.exports = {
-    travelList
+    tripList
 };

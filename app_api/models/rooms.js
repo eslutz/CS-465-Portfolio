@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Define trip schema
+// Define room schema
 const roomSchema = new mongoose.Schema({
     code: { type: String, required: true, index: true },
     name: { type: String, required: true, index: true },

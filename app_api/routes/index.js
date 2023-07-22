@@ -1,11 +1,22 @@
 const express = require('express');
 const router = express.Router();
 
+const mealsController = require('../controllers/meals');
 const newsController = require('../controllers/news');
 const roomsController = require('../controllers/rooms');
 const travelController = require('../controllers/travel');
 
 // API routes
+// Route to get a list of all meals
+router
+    .route('/meals')
+    .get(mealsController.mealList);
+
+// Route to find and return a single meal by meal code
+router
+    .route('/meals/:mealCode')
+    .get(mealsController.mealFindByCode);
+
 // Route to get a list of all news
 router
     .route('/news')
