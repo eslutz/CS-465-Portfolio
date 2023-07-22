@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
-const model = mongoose.model('rooms');
+const model = mongoose.model('news');
 
-// GET: /rooms - return list of all rooms
-const roomList = async (req, res) => {
+// GET: /news - return list of all news
+const newsList = async (req, res) => {
     model
-        .find({}) // Empty filter to return all rooms
-        .exec((err, rooms) => {
-            if (!rooms) {
+        .find({}) // Empty filter to return all news
+        .exec((err, news) => {
+            if (!news) {
                 return res
                     .status(404)
-                    .json({ "message": "rooms not found" });
+                    .json({ "message": "news not found" });
             } else if (err) {
                 return res
                     .status(404)
@@ -17,20 +17,20 @@ const roomList = async (req, res) => {
             } else {
                 return res
                     .status(200)
-                    .json(rooms);
+                    .json(news);
             }
         });
 };
 
-// GET: /rooms/:roomCode - return a single room
-const roomFindByCode = async (req, res) => {
+// GET: /news/:newsCode - return a single news piece
+const newsFindByCode = async (req, res) => {
     model
-        .find({ 'code': req.params.roomCode })
-        .exec((err, room) => {
-            if (!room) {
+        .find({ 'code': req.params.newsCode })
+        .exec((err, news) => {
+            if (!news) {
                 return res
                     .status(404)
-                    .json({ "message": "room not found" });
+                    .json({ "message": "news not found" });
             } else if (err) {
                 return res
                     .status(404)
@@ -38,12 +38,12 @@ const roomFindByCode = async (req, res) => {
             } else {
                 return res
                     .status(200)
-                    .json(room);
+                    .json(news);
             }
         });
 };
 
 module.exports = {
-    roomList,
-    roomFindByCode
+    newsList,
+    newsFindByCode
 };

@@ -1,16 +1,27 @@
 const express = require('express');
 const router = express.Router();
 
+const newsController = require('../controllers/news');
 const roomsController = require('../controllers/rooms');
 const travelController = require('../controllers/travel');
 
 // API routes
+// Route to get a list of all news
+router
+    .route('/news')
+    .get(newsController.newsList);
+
+// Route to find and return a single news piece by news code
+router
+    .route('/news/:newsCode')
+    .get(newsController.newsFindByCode);
+
 // Route to get a list of all rooms
 router
     .route('/rooms')
     .get(roomsController.roomList);
 
-// Route to find and return a single room by room name
+// Route to find and return a single room by room code
 router
     .route('/rooms/:roomCode')
     .get(roomsController.roomFindByCode);
