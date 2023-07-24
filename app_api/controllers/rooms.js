@@ -23,7 +23,7 @@ const roomList = async (req, res) => {
 };
 
 // GET: /rooms/:roomCode - return a single room
-const roomFindByCode = async (req, res) => {
+const roomsFindCode = async (req, res) => {
     model
         .find({ 'code': req.params.roomCode })
         .exec((err, room) => {
@@ -45,5 +45,5 @@ const roomFindByCode = async (req, res) => {
 
 module.exports = {
     roomList,
-    roomFindByCode
+    roomsFindCode
 };

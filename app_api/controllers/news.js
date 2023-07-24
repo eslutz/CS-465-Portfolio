@@ -23,7 +23,7 @@ const newsList = async (req, res) => {
 };
 
 // GET: /news/:newsCode - return a single news piece
-const newsFindByCode = async (req, res) => {
+const newsFindCode = async (req, res) => {
     model
         .find({ 'code': req.params.newsCode })
         .exec((err, news) => {
@@ -45,5 +45,5 @@ const newsFindByCode = async (req, res) => {
 
 module.exports = {
     newsList,
-    newsFindByCode
+    newsFindCode
 };

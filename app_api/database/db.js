@@ -64,7 +64,7 @@ process.on('SIGTERM', () => {
 
 connect();
 
-require('../../app_api/models/meals');
-require('../../app_api/models/news');
-require('../../app_api/models/rooms');
-require('../../app_api/models/trips');
+require('./models/meals');
+require('./models/news');
+require('./models/rooms');
+require('./models/trips');

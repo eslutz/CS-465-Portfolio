@@ -23,7 +23,7 @@ const mealList = async (req, res) => {
 };
 
 // GET: /meals/:mealCode - return a single meal
-const mealFindByCode = async (req, res) => {
+const mealsFindCode = async (req, res) => {
     model
         .find({ 'code': req.params.mealCode })
         .exec((err, meal) => {
@@ -45,5 +45,5 @@ const mealFindByCode = async (req, res) => {
 
 module.exports = {
     mealList,
-    mealFindByCode
+    mealsFindCode
 };

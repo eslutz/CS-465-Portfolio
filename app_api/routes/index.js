@@ -15,7 +15,7 @@ router
 // Route to find and return a single meal by meal code
 router
     .route('/meals/:mealCode')
-    .get(mealsController.mealFindByCode);
+    .get(mealsController.mealsFindCode);
 
 // Route to get a list of all news
 router
@@ -25,7 +25,7 @@ router
 // Route to find and return a single news piece by news code
 router
     .route('/news/:newsCode')
-    .get(newsController.newsFindByCode);
+    .get(newsController.newsFindCode);
 
 // Route to get a list of all rooms
 router
@@ -35,7 +35,7 @@ router
 // Route to find and return a single room by room code
 router
     .route('/rooms/:roomCode')
-    .get(roomsController.roomFindByCode);
+    .get(roomsController.roomsFindCode);
 
 // Route to get a list of all trips
 router
@@ -45,6 +45,6 @@ router
 // Route to find and return a single trip by trip code
 router
     .route('/trips/:tripCode')
-    .get(travelController.tripFindByCode);
+    .get(travelController.tripsFindCode);
 
 module.exports = router;
