@@ -3,44 +3,42 @@ const model = mongoose.model('trips');
 
 // GET: /trips - return list of all trips
 const tripList = async (req, res) => {
-    model
-        .find({}) // Empty filter to return all trips
-        .exec((err, trips) => {
-            if (!trips) {
-                return res
-                    .status(404)
-                    .json({ "message": "trips not found" });
-            } else if (err) {
-                return res
-                    .status(404)
-                    .json(err);
-            } else {
-                return res
-                    .status(200)
-                    .json(trips);
-            }
-        });
+    try {
+        const trips = await model.find({});
+        if (!trips) {
+            return res
+                .status(404)
+                .json({ "message": "trips not found" });
+        } else {
+            return res
+                .status(200)
+                .json(trips);
+        }
+    } catch (err) {
+        return res
+            .status(404)
+            .json(err);
+    }
 };
 
 // GET: /trips/:tripCode - return a single trip
 const tripsFindCode = async (req, res) => {
-    model
-        .find({ 'code': req.params.tripCode })
-        .exec((err, trip) => {
-            if (!trip) {
-                return res
-                    .status(404)
-                    .json({ "message": "trip not found" });
-            } else if (err) {
-                return res
-                    .status(404)
-                    .json(err);
-            } else {
-                return res
-                    .status(200)
-                    .json(trip);
-            }
-        });
+    try {
+        const trip = await model.find({ 'code': req.params.tripCode });
+        if (!trip) {
+            return res
+                .status(404)
+                .json({ "message": "trip not found" });
+        } else {
+            return res
+                .status(200)
+                .json(trip);
+        }
+    } catch (err) {
+        return res
+            .status(404)
+            .json(err);
+    }
 };
 
 module.exports = {
