@@ -1,11 +1,10 @@
 const fs = require('fs');
 const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-const request = require('request');
 const apiOptions = {
     server: 'http://localhost:3000'
 }
 
-/* Render room list view */
+/* Render news list view */
 const renderNewsList = (req, res, responseBody) => {
     let message = null;
     let pageTitle = packageJson.description + ' | News';
@@ -33,25 +32,29 @@ const renderNewsList = (req, res, responseBody) => {
     });
 };
 
-/* GET room list. */
+/* GET news list. */
 const newsList = (req, res) => {
     const path = '/api/news';
-    const requestOptions = {
-        url: `${apiOptions.server}${path}`,
-        method: 'GET',
-        json: {}
-    };
-    console.log('>> newsController.newsList calling ' + requestOptions.url);
-    request(
-        requestOptions,
-        (err, {statusCode}, body) => {
+    const url = `${apiOptions.server}${path}`;
+
+    console.log('>> newsController.newsList calling ' + url);
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(body => {
             let news = [];
-            if (statusCode === 200 && body.length) {
-                news = body
+            if (body.length) {
+                news = body;
             }
             renderNewsList(req, res, news);
-        }
-    );
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
 };
 
 module.exports = {

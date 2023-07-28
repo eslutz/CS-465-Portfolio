@@ -1,6 +1,5 @@
 const fs = require('fs');
 const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-const request = require('request');
 const apiOptions = {
     server: 'http://localhost:3000'
 }
@@ -30,25 +29,26 @@ const renderTripList = (req, res, responseBody) => {
 /* GET trip list. */
 const tripList = (req, res) => {
     const path = '/api/trips';
-    const requestOptions = {
-        url: `${apiOptions.server}${path}`,
-        method: 'GET',
-        json: {}
-    };
-    console.log('>> travelController.tripList calling ' + requestOptions.url);
-    request(
-        requestOptions,
-        (err, {statusCode}, body) => {
+    const url = `${apiOptions.server}${path}`;
+
+    console.log('>> travelController.tripList calling ' + url);
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(body => {
             let trips = [];
-            if (statusCode === 200 && body.length) {
-                trips = body.map((trip) => {
-                    trip.date = trip.date ? trip.date : 'N/A';
-                    return trip;
-                });
+            if (body.length) {
+                trips = body;
             }
             renderTripList(req, res, trips);
-        }
-    );
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
 };
 
 module.exports = {
