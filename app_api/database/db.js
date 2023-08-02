@@ -7,12 +7,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const connect = () => {
-    setTimeout(() =>
-        mongoose.connect(dbURL, {
-            useNewUrlParser: true,
-            useCreateIndex: true,
-            useUnifiedTopology: true
-        }), 1000);
+  setTimeout(() =>
+      mongoose.connect(dbURL, {
+          useNewUrlParser: true,
+          useCreateIndex: true,
+          useUnifiedTopology: true
+      }), 1000);
 }
 
 mongoose.connection.on('connected', () => {

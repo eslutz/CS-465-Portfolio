@@ -19,7 +19,7 @@
                                     <ul>
                                         {{#each latestNews}}
                                         <li>
-                                            <a href="{{this.link}}">{{this.title}}</a>
+                                            <a href="/api/news/{{this.code}}">{{this.title}}</a>
                                         </li>
                                         {{/each}}
                                     </ul>
@@ -27,17 +27,19 @@
                                     <ul>
                                         {{#each vacationTips}}
                                         <li>
-                                            <a href="{{this.link}}">{{this.title}}</a>
+                                            <a href="/api/news/{{this.code}}">{{this.title}}</a>
                                         </li>
                                         {{/each}}
                                     </ul>
                                 </div>
                                 <div>
                                     <h1>News</h1>
-                                    <img src="images/{{featuredStory.image}}" alt="{{featuredStory.alt}}">
-                                    <h2>{{featuredStory.title}}</h2>
-                                    <span class="time">{{featuredStory.publishDate}}<br> by: {{featuredStory.author}}</span>
-                                    {{{featuredStory.content}}}
+                                    <a href="/api/news/{{featured.code}}">
+                                        <img src="images/{{featured.image}}" alt="{{featured.alt}}">
+                                    </a>
+                                    <h2>{{featured.title}}</h2>
+                                    <span class="time">{{featured.publishDate}}<br> by: {{featured.author}}</span>
+                                    {{{featured.content}}}
                                 </div>
                             </div>
                         </div>
