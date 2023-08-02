@@ -31,7 +31,7 @@ const tripList = (req, res) => {
     const path = '/api/trips';
     const url = `${apiOptions.server}${path}`;
 
-    console.log('>> travelController.tripList calling ' + url);
+    console.log(`Inside travelController.tripList calling ${url}`);
     fetch(url)
         .then(response => {
             if (response.ok) {

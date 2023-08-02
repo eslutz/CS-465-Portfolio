@@ -20,7 +20,7 @@ export class TripListingComponent implements OnInit {
   }
 
   private getTrips(): void {
-    console.log('Inside TripListingComponent#getTrips');
+    console.log('TripListingComponent#getTrips calling TripDataService#getTrips');
     this.message = 'Searching for trips';
     this.tripDataService
       .getTrips()
@@ -31,7 +31,7 @@ export class TripListingComponent implements OnInit {
   }
 
   public addTrip(): void {
-    console.log('Inside TripListingComponent#addTrip');
+    console.log('TripListingComponent#addTrip routing to TripAddComponent');
     this.router.navigate(['/add-trip']);
   }
 }

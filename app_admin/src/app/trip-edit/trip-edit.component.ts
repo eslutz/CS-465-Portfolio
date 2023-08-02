@@ -11,6 +11,7 @@ import { TripDataService } from '../services/trip-data.service';
 export class TripEditComponent {
   editTripFormGroup!: FormGroup;
   submitted = false;
+  private tripCode: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,13 +21,13 @@ export class TripEditComponent {
 
   ngOnInit() {
     // retrieve stashed tripId
-    let tripCode = localStorage.getItem("tripCode");
-    if (!tripCode) {
-      alert("Something wrong, couldn't find where I stashed tripCode!");
-      this.router.navigate([""]);
+    this.tripCode = localStorage.getItem('tripCode');
+    if (!this.tripCode) {
+      console.error("Something has gone wrong, couldn't find where I stashed tripCode!");
+      this.router.navigate(['']);
       return;
     }
-    console.log("EditTripComponent#onInit found tripCode " + tripCode);
+    console.log('TripEditComponent#onInit found tripCode ' + this.tripCode);
 
     // initialize form
     this.editTripFormGroup = this.formBuilder.group({
@@ -41,27 +42,36 @@ export class TripEditComponent {
       description: ['', Validators.required],
     });
 
-    console.log(
-      "EditTripComponent#onInit calling TripDataService#getTrip('" +
-      tripCode +
-      "')"
-    );
-
+    console.log(`TripEditComponent#onInit calling TripDataService#getTrip('${this.tripCode}')`);
     // Retrieve the most recent trip data from the database
-    this.tripService.getTrip(tripCode).then((data) => {
-      console.log(data);
+    this.tripService.getTrip(this.tripCode).then((data) => {
+      console.log('TripEditComponent#onInit data', data);
       // Don't use editTripFormGroup.setValue() as it will throw console error
       this.editTripFormGroup.patchValue(data[0]);
     });
   }
 
   onSubmit() {
+    console.log(`TripEditComponent#onSubmit calling TripDataService#updateTrip('${this.tripCode}')`);
     this.submitted = true;
     if (this.editTripFormGroup.valid) {
       this.tripService.updateTrip(this.editTripFormGroup.value).then((data) => {
-        console.log(data);
+        console.log('TripEditComponent#onSubmit data', data);
         this.router.navigate(['']);
       });
+    }
+  }
+
+  deleteTrip() {
+    console.log(`TripEditComponent#deleteTrip calling TripDataService#deleteTrip('${this.tripCode}')`);
+    if (this.tripCode != null) {
+      this.tripService.deleteTrip(this.tripCode).then((data) => {
+        console.log('TripEditComponent#deleteTrip data', data);
+        this.router.navigate(['']);
+      });
+    } else {
+      console.error('TripEditComponent#deleteTrip failed, tripCode is null');
+      this.router.navigate(['']);
     }
   }
 
@@ -70,4 +80,3 @@ export class TripEditComponent {
     return this.editTripFormGroup.controls;
   }
 }
-

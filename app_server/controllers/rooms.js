@@ -31,7 +31,7 @@ const roomList = (req, res) => {
     const path = '/api/rooms';
     const url = `${apiOptions.server}${path}`;
 
-    console.log('>> roomsController.roomList calling ' + url);
+    console.log(`Inside roomsController.roomList calling ${url}`);
     fetch(url)
         .then(response => {
             if (response.ok) {

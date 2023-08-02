@@ -16,16 +16,16 @@ const connect = () => {
 }
 
 mongoose.connection.on('connected', () => {
-  console.log('connected');
+  console.log('DB connected');
 });
 
 mongoose.connection.on('error', err => {
-  console.log('error: ' + err);
+  console.log('DB error', err);
   return connect();
 });
 
 mongoose.connection.on('disconnected', () => {
-  console.log('disconnected');
+  console.log('DB disconnected');
 });
 
 if (process.platform === 'win32') {
@@ -40,7 +40,7 @@ if (process.platform === 'win32') {
 
 const gracefulShutdown = (msg, callback) => {
   mongoose.connection.close( () => {
-    console.log(`Mongoose disconnected through ${msg}`);
+    console.log(`DB disconnected through ${msg}`);
     callback();
   });
 };

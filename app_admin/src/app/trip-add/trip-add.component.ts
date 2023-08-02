@@ -33,10 +33,11 @@ export class TripAddComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('TripAddComponent#onSubmit calling TripDataService#Trip');
     this.submitted = true;
     if (this.addTripFormGroup.valid) {
       this.tripService.addTrip(this.addTripFormGroup.value).then((data) => {
-        console.log(data);
+        console.log('TripAddComponent#onSubmit data', data);
         this.router.navigate(['']);
       });
     }

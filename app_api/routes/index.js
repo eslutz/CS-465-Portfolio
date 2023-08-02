@@ -47,6 +47,7 @@ router
 router
     .route('/trips/:tripCode')
     .get(travelController.tripsFindCode)
-    .put(travelController.tripsUpdateTrip);
+    .put(travelController.tripsUpdateTrip)
+    .delete(travelController.tripsDeleteTrip);
 
 module.exports = router;

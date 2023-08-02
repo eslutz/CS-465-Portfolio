@@ -3,6 +3,7 @@ const tripModel = mongoose.model('trips');
 
 // GET: /trips - return list of all trips
 const tripList = async (req, res) => {
+    console.log('TravelController#tripList', req.body);
     tripModel
         .find({})
         .exec((err, trips) => {
@@ -24,6 +25,7 @@ const tripList = async (req, res) => {
 
 // GET: /trips/:tripCode - return a single trip
 const tripsFindCode = async (req, res) => {
+    console.log('TravelController#tripsFindCode', req.body);
     tripModel
         .find({ code: req.params.tripCode })
         .exec((err, trip) => {
@@ -45,6 +47,7 @@ const tripsFindCode = async (req, res) => {
 
 // POST: /trips - add a new trip
 const tripsAddTrip = async (req, res) => {
+    console.log('TravelController#tripsAddTrip', req.body);
     tripModel
         .create(
             {
@@ -73,7 +76,7 @@ const tripsAddTrip = async (req, res) => {
 
 // PUT: /trips/:tripCode - update a single trip
 const tripsUpdateTrip = async (req, res) => {
-    console.log(req.body);
+    console.log('TravelController#tripsUpdateTrip', req.body);
     tripModel
         .findOneAndUpdate({
             code: req.params.tripCode
@@ -111,11 +114,42 @@ const tripsUpdateTrip = async (req, res) => {
                 .status(500) // server error
                 .json(err);
         });
-  };
+};
+
+// DELETE: /trips/:tripCode - delete a single trip
+const tripsDeleteTrip = async (req, res) => {
+    console.log('TravelController#tripsDeleteTrip', req.body);
+    tripModel
+        .findOneAndRemove({
+            code: req.params.tripCode
+        })
+        .then((trip) => {
+            if (!trip) {
+                return res
+                    .status(404)
+                    .send({ message: 'trip not found with code ' + req.params.tripCode });
+            }
+            res
+                .status(200)
+                .send({ message: `trip ${req.params.tripCode} successfully deleted!` });
+        })
+        .catch((err) => {
+            if (err.kind === 'ObjectId') {
+                return res
+
+                    .status(404)
+                    .send({ message: 'trip not found with code ' + req.params.tripCode });
+            }
+            return res
+                .status(500) // server error
+                .json(err);
+        });
+};
 
 module.exports = {
     tripList,
     tripsFindCode,
     tripsAddTrip,
-    tripsUpdateTrip
+    tripsUpdateTrip,
+    tripsDeleteTrip
 };

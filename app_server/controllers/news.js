@@ -37,7 +37,7 @@ const newsList = (req, res) => {
     const path = '/api/news';
     const url = `${apiOptions.server}${path}`;
 
-    console.log('>> newsController.newsList calling ' + url);
+    console.log(`Inside newsController.newsList calling ${url}`);
     fetch(url)
         .then(response => {
             if (response.ok) {
