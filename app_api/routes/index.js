@@ -40,11 +40,13 @@ router
 // Route to get a list of all trips
 router
     .route('/trips')
-    .get(travelController.tripList);
+    .get(travelController.tripList)
+    .post(travelController.tripsAddTrip);
 
 // Route to find and return a single trip by trip code
 router
     .route('/trips/:tripCode')
-    .get(travelController.tripsFindCode);
+    .get(travelController.tripsFindCode)
+    .put(travelController.tripsUpdateTrip);
 
 module.exports = router;

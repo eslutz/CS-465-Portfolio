@@ -148,6 +148,35 @@
 			"response": []
 		},
 		{
+			"name": "trips/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\" : null,\n    \"code\" : \"MEGR240119\",\n    \"name\" : \"Mega Reef\",\n    \"length\" : \"6 nights / 7 days\",\n    \"start\" : \"2024-01-19T08:00:00.000+0000\",\n    \"resort\" : \"Barrier Island Resort\",\n    \"perPerson\" : \"3499.00\",\n    \"image\" : \"reef3.jpg\",\n    \"description\" : \"<p>The Great Barrier Reef...donec sed felis risus. Nulla facilisi. Donec a orci tellus, et auctor odio. Fusce ac orci nibh, quis semper arcu. Cras orci neque, euismod et accumsan ac, sagittis molestie lorem. Proin odio sapien, elementum at tempor non.</p><p>Vulputate eget libero. In hac habitasse platea dictumst. Integer purus justo, egestas eu consectetur eu, cursus in tortor. Quisque nec nunc ac mi ultrices iaculis.</p>\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{travlr_host}}/api/trips/",
+					"host": [
+						"{{travlr_host}}"
+					],
+					"path": [
+						"api",
+						"trips",
+						""
+					]
+				},
+				"description": "Add a trip."
+			},
+			"response": []
+		},
+		{
 			"name": "trips/:tripCode",
 			"request": {
 				"method": "GET",

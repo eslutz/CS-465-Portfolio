@@ -1,44 +1,45 @@
 const mongoose = require('mongoose');
-const model = mongoose.model('meals');
+const mealModel = mongoose.model('meals');
 
 // GET: /meals - return list of all meals
 const mealList = async (req, res) => {
-    try {
-        const meals = await model.find({});
-        if (!meals) {
-            return res
-                .status(404)
-                .json({ "message": "meals not found" });
-        } else {
-            return res
-                .status(200)
-                .json(meals);
-        }
-    } catch (err) {
-        return res
-            .status(404)
-            .json(err);
-    }
+    mealModel
+        .find({})
+        .exec((err, meals) => {
+            if (!meals) {
+                return res
+                    .status(404)
+                    .json({ message: 'meals not found' });
+            } else if (err) {
+                return res
+                    .status(404)
+                    .json(err);
+            } else {
+                return res
+                    .status(200)
+                    .json(meals);
+            }
+        });
 };
 
 // GET: /meals/:mealCode - return a single meal
 const mealsFindCode = async (req, res) => {
-    try {
-        const meals = await model.find({ 'code': req.params.mealCode });
-        if (!meals) {
+    mealModel.find({ 'code': req.params.mealCode })
+    .exec((err, meal) => {
+        if (!meal) {
             return res
                 .status(404)
-                .json({ "message": "meal not found" });
+                .json({ message: 'meal not found with code ' + req.params.mealCode });
+        } else if (err) {
+            return res
+                .status(404)
+                .json(err);
         } else {
             return res
                 .status(200)
-                .json(meals);
+                .json(meal);
         }
-    } catch (err) {
-        return res
-            .status(404)
-            .json(err);
-    }
+    });
 };
 
 module.exports = {
