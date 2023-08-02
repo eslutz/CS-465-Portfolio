@@ -53,4 +53,15 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// Custom Handlebars helper to check if the current page matches the active page
+hbs.registerHelper('activePage', function(page, options) {
+  const currentPage = options.data.root.activePage;
+  return currentPage === page ? 'selected' : '';
+});
+
+hbs.registerHelper('activePageFooter', function(page, options) {
+  const currentPage = options.data.root.activePage;
+  return currentPage === page ? 'active' : '';
+});
+
 module.exports = app;
