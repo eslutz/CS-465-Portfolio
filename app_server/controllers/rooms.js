@@ -1,5 +1,6 @@
 const fs = require('fs');
 const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+const request = require('request');
 const apiOptions = {
     server: 'http://localhost:3000'
 }
@@ -29,26 +30,19 @@ const renderRoomList = (req, res, responseBody) => {
 /* GET room list. */
 const roomList = (req, res) => {
     const path = '/api/rooms';
-    const url = `${apiOptions.server}${path}`;
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'GET',
+        json: {},
+    };
 
-    console.log('>> roomsController.roomList calling ' + url);
-    fetch(url)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Network response was not ok.');
-        })
-        .then(body => {
-            let rooms = [];
-            if (body.length) {
-                rooms = body;
-            }
-            renderRoomList(req, res, rooms);
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
+    console.info(' >> roomsController.roomList calling ' + requestOptions.url);
+    request(requestOptions, (err, { statusCode }, body) => {
+        if (err) {
+            console.error(err);
+        }
+        renderRoomList(req, res, body);
+    });
 };
 
 module.exports = {

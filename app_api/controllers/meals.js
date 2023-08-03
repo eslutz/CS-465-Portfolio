@@ -8,7 +8,7 @@ const mealList = async (req, res) => {
         if (!meals) {
             return res
                 .status(404)
-                .json({ "message": "meals not found" });
+                .json({ message: "meals not found" });
         } else {
             return res
                 .status(200)
@@ -28,7 +28,7 @@ const mealsFindCode = async (req, res) => {
         if (!meals) {
             return res
                 .status(404)
-                .json({ "message": "meal not found" });
+                .json({ message: "meal not found" });
         } else {
             return res
                 .status(200)

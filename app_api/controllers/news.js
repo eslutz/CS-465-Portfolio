@@ -8,7 +8,7 @@ const newsList = async (req, res) => {
         if (!news) {
             return res
                 .status(404)
-                .json({ "message": "news not found" });
+                .json({ message: "news not found" });
         } else {
             return res
                 .status(200)
@@ -28,7 +28,7 @@ const newsFindCode = async (req, res) => {
         if (!news) {
             return res
                 .status(404)
-                .json({ "message": "news not found" });
+                .json({ message: "news not found" });
         } else {
             return res
                 .status(200)

@@ -1,11 +1,12 @@
 const fs = require('fs');
 const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+const request = require('request');
 const apiOptions = {
     server: 'http://localhost:3000'
 }
 
 /* Render meal list view */
-const renderRoomList = (req, res, responseBody) => {
+const renderMealList = (req, res, responseBody) => {
     let message = null;
     let pageTitle = packageJson.description + ' | Meals';
 
@@ -29,26 +30,19 @@ const renderRoomList = (req, res, responseBody) => {
 /* GET meal list. */
 const mealList = (req, res) => {
     const path = '/api/meals';
-    const url = `${apiOptions.server}${path}`;
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'GET',
+        json: {},
+    };
 
-    console.log('>> mealsController.mealList calling ' + url);
-    fetch(url)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Network response was not ok.');
-        })
-        .then(body => {
-            let meals = [];
-            if (body.length) {
-                meals = body;
-            }
-            renderRoomList(req, res, meals);
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
+    console.log('>> mealsController.mealList calling ' + requestOptions.url);
+    request(requestOptions, (err, { statusCode }, body) => {
+        if (err) {
+            console.error(err);
+        }
+        renderMealList(req, res, body);
+    });
 };
 
 module.exports = {

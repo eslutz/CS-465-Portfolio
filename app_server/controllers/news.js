@@ -1,5 +1,6 @@
 const fs = require('fs');
 const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+const request = require('request');
 const apiOptions = {
     server: 'http://localhost:3000'
 }
@@ -35,26 +36,19 @@ const renderNewsList = (req, res, responseBody) => {
 /* GET news list. */
 const newsList = (req, res) => {
     const path = '/api/news';
-    const url = `${apiOptions.server}${path}`;
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'GET',
+        json: {},
+    };
 
-    console.log('>> newsController.newsList calling ' + url);
-    fetch(url)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Network response was not ok.');
-        })
-        .then(body => {
-            let news = [];
-            if (body.length) {
-                news = body;
-            }
-            renderNewsList(req, res, news);
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
+    console.info(' >> newsController.newsList calling ' + requestOptions.url);
+    request(requestOptions, (err, { statusCode }, body) => {
+        if (err) {
+            console.error(err);
+        }
+        renderNewsList(req, res, body);
+    });
 };
 
 module.exports = {

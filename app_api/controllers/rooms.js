@@ -8,7 +8,7 @@ const roomList = async (req, res) => {
         if (!rooms) {
             return res
                 .status(404)
-                .json({ "message": "rooms not found" });
+                .json({ message: "rooms not found" });
         } else {
             return res
                 .status(200)
@@ -28,7 +28,7 @@ const roomsFindCode = async (req, res) => {
         if (!room) {
             return res
                 .status(404)
-                .json({ "message": "room not found" });
+                .json({ message: "room not found" });
         } else {
             return res
                 .status(200)
