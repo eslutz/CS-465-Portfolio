@@ -16,10 +16,10 @@
                             <div class="body">
                                 <h1>Rooms</h1>
                                 <ul id="rooms">
-                                    {{#each room}}
+                                    {{#each rooms}}
                                     <li>
-                                        <a href="{{this.link}}"><image src="images/{{this.image}}" alt="{{this.alt}}"></a>
-                                        <h2><a href="{{this.link}}">{{this.name}}</a></h2>
+                                        <a href="/api/rooms/{{this.code}}"><image src="images/{{this.image}}" alt="{{this.alt}}"></a>
+                                        <h2><a href="/api/rooms/{{this.code}}">{{this.name}}</a></h2>
                                         <p>
                                             {{{this.description}}}
                                         </p>
