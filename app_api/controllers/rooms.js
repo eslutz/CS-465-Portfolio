@@ -1,44 +1,47 @@
+
 const mongoose = require('mongoose');
-const model = mongoose.model('rooms');
+const roomModel = mongoose.model('rooms');
 
 // GET: /rooms - return list of all rooms
 const roomList = async (req, res) => {
-    try {
-        const rooms = await model.find({});
-        if (!rooms) {
-            return res
-                .status(404)
-                .json({ message: "rooms not found" });
-        } else {
-            return res
-                .status(200)
-                .json(rooms);
-        }
-    } catch (err) {
-        return res
-            .status(404)
-            .json(err);
-    }
+    roomModel
+        .find({})
+        .exec((err, rooms) => {
+            if (!rooms) {
+                return res
+                    .status(404)
+                    .json({ message: 'rooms not found' });
+            } else if (err) {
+                return res
+                    .status(404)
+                    .json(err);
+            } else {
+                return res
+                    .status(200)
+                    .json(rooms);
+            }
+        });
 };
 
 // GET: /rooms/:roomCode - return a single room
 const roomsFindCode = async (req, res) => {
-    try {
-        const room = await model.find({ 'code': req.params.roomCode });
-        if (!room) {
-            return res
-                .status(404)
-                .json({ message: "room not found" });
-        } else {
-            return res
-                .status(200)
-                .json(room);
-        }
-    } catch (err) {
-        return res
-            .status(404)
-            .json(err);
-    }
+    roomModel
+        .find({ code: req.params.roomCode })
+        .exec((err, room) => {
+            if (!room) {
+                return res
+                    .status(404)
+                    .json({ message: 'room not found with code ' + req.params.roomCode });
+            } else if (err) {
+                return res
+                    .status(404)
+                    .json(err);
+            } else {
+                return res
+                    .status(200)
+                    .json(room);
+            }
+        });
 };
 
 module.exports = {
