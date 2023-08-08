@@ -63,6 +63,7 @@ process.on('SIGTERM', () => {
 
 connect();
 
+require('./models/users');
 require('./models/meals');
 require('./models/news');
 require('./models/rooms');
