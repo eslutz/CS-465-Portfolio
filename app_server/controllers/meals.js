@@ -5,7 +5,7 @@ const apiOptions = {
 }
 
 /* Render meal list view */
-const renderRoomList = (req, res, responseBody) => {
+const renderMealList = (req, res, responseBody) => {
     let message = null;
     let pageTitle = packageJson.description + ' | Meals';
 
@@ -31,7 +31,7 @@ const mealList = (req, res) => {
     const path = '/api/meals';
     const url = `${apiOptions.server}${path}`;
 
-    console.log('>> mealsController.mealList calling ' + url);
+    console.log(`Inside mealsController.mealList calling ${url}`);
     fetch(url)
         .then(response => {
             if (response.ok) {
@@ -44,7 +44,7 @@ const mealList = (req, res) => {
             if (body.length) {
                 meals = body;
             }
-            renderRoomList(req, res, meals);
+            renderMealList(req, res, meals);
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
