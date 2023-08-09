@@ -1,6 +1,6 @@
 {
   "name": "cs-465-travlr-getaways",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "description": "Travlr Getaways",
   "homepage": "https://github.com/eslutz/cs-465-portfolio#readme",
@@ -28,9 +28,14 @@
   "dependencies": {
     "cookie-parser": "^1.4.4",
     "debug": "^4.3.4",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "express-jwt": "^8.4.1",
     "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.1",
     "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
     "supports-color": "^9.4.0"
   },
   "devDependencies": {

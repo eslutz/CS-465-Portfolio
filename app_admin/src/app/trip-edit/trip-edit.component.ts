@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { TripDataService } from '../services/trip-data.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-trip-edit',
@@ -14,9 +14,9 @@ export class TripEditComponent {
   private tripCode: string | null = null;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private tripService: TripDataService,
     private router: Router,
-    private tripService: TripDataService
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
