@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { TripDataService } from '../services/trip-data.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-trip-add',
@@ -13,9 +13,9 @@ export class TripAddComponent implements OnInit {
   submitted = false;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private tripService: TripDataService,
     private router: Router,
-    private tripService: TripDataService
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {

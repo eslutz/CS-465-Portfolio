@@ -11,3 +11,8 @@
 html {
     font-family: 'Mona Sans';
 }
+
+.hide-alert {
+    visibility: hidden;
+    display: block !important;
+  }

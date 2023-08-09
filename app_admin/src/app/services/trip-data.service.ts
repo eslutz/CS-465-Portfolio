@@ -1,11 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { BROWSER_STORAGE } from "../storage";
+import { AuthResponse } from '../models/authresponse';
 import { Trip } from '../models/trip';
+import { User } from '../models/user';
 
 @Injectable()
 export class TripDataService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    @Inject(BROWSER_STORAGE) private storage: Storage
+  ) { }
 
   private apiBaseUrl = 'http://localhost:3000/api';
 
@@ -46,6 +52,24 @@ export class TripDataService {
     return await lastValueFrom(
       this.httpClient
         .delete(`${this.apiBaseUrl}/trips/${tripCode}`)
+    ).catch(this.handleError);
+  }
+
+  public login(user: User): Promise<AuthResponse> {
+    console.log('Inside TripDataService#login');
+    return this.makeAuthApiCall('login', user);
+  }
+
+  public register(user: User): Promise<AuthResponse> {
+    console.log('Inside TripDataService#register');
+    return this.makeAuthApiCall('register', user);
+  }
+
+  private async makeAuthApiCall(urlPath: string, user: User): Promise<AuthResponse> {
+    console.log(`Inside TripDataService#makeAuthApiCall('${urlPath}')`);
+    return await lastValueFrom(
+      this.httpClient
+        .post<AuthResponse>(`${this.apiBaseUrl}/${urlPath}`, user)
     ).catch(this.handleError);
   }
 
