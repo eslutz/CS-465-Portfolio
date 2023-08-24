@@ -2,15 +2,17 @@
 
 Portfolio containing assignments and projects from CS-465 Full Stack Development.
 
-- [Software Design Document](Software%20Design%20Document.pdf)
-- [Application Backend Server](../app_server/)
-- [Application APIs](../app_api/)
-- [Application Admin Portal](../app_admin/)
-- [Project Reflection](#project-reflection)
-  - [Architecture](#architecture)
-  - [Functionality](#functionality)
-  - [Testing](#testing)
-  - [Reflection](#reflection)
+- Code
+  - [Application Backend Server](../app_server/)
+  - [Application APIs](../app_api/)
+  - [Application Admin Portal](../app_admin/)
+- Assignments
+  - [Software Design Document](Software%20Design%20Document.pdf)
+  - [Project Reflection](#project-reflection)
+    - [Architecture](#architecture)
+    - [Functionality](#functionality)
+    - [Testing](#testing)
+    - [Reflection](#reflection)
 
 ## Project Reflection
 
