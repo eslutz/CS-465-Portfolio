@@ -1,6 +1,6 @@
 # CS-465-Portfolio
 
-Portfolio containing assignments and projects from CS-465 Full Stack Development.
+Portfolio containing assignments and projects from CS-465 Full Stack Development I.
 
 - Code
   - [Application Backend Server](../app_server/)
